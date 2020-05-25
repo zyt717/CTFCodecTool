@@ -11,225 +11,236 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>CTFCodecTool</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QSplitter" name="splitter_2">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+     <widget class="QToolBox" name="toolBox">
+      <property name="currentIndex">
+       <number>0</number>
       </property>
-      <widget class="QToolBox" name="toolBox">
-       <property name="currentIndex">
-        <number>0</number>
+      <widget class="QWidget" name="pageEncode">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>109</width>
+         <height>586</height>
+        </rect>
        </property>
-       <widget class="QWidget" name="pageEncode">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>91</width>
-          <height>534</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>编码</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="pageDecode">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>91</width>
-          <height>534</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>解码</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="pageEncrypt">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>91</width>
-          <height>534</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>加密</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="pageDecrypt">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>91</width>
-          <height>534</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>解密</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="pageHex">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>91</width>
-          <height>534</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>进制转换</string>
-        </attribute>
-       </widget>
+       <attribute name="label">
+        <string>编码</string>
+       </attribute>
       </widget>
-      <widget class="QSplitter" name="splitter">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
+      <widget class="QWidget" name="pageEncrypt">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>109</width>
+         <height>586</height>
+        </rect>
        </property>
-       <widget class="QWidget" name="layoutWidget">
-        <layout class="QVBoxLayout" name="verticalLayout_src">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0,0,0,0,0">
-           <item>
-            <widget class="QLineEdit" name="srcLineEdit1">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="placeholderText">
-              <string>参数1</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="srcLineEdit2">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="placeholderText">
-              <string>参数2</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="srcReplaceButton">
-             <property name="text">
-              <string>替换</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="srcClearButton">
-             <property name="text">
-              <string>清空</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="srcCopyButton">
-             <property name="text">
-              <string>复制</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="srcPasteButton">
-             <property name="text">
-              <string>粘贴</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="srcOpenButton">
-             <property name="text">
-              <string>打开文件</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QPlainTextEdit" name="srcTextEdit">
-           <property name="plainText">
-            <string/>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="layoutWidget">
-        <layout class="QVBoxLayout" name="verticalLayout_dst">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <widget class="QLineEdit" name="dstLineEdit1">
-             <property name="placeholderText">
-              <string>参数3</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="dstLineEdit2">
-             <property name="placeholderText">
-              <string>参数4</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="dstReplaceButton">
-             <property name="text">
-              <string>替换</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="dstClearButton">
-             <property name="text">
-              <string>清空</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="dstCopyButton">
-             <property name="text">
-              <string>复制</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="dstPasteButton">
-             <property name="text">
-              <string>粘贴</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="dstSaveButton">
-             <property name="text">
-              <string>保存文件</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QPlainTextEdit" name="dstTextEdit"/>
-         </item>
-        </layout>
-       </widget>
+       <attribute name="label">
+        <string>加密</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="pageHex">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>109</width>
+         <height>586</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>进制转换</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout_src">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0,0,0,0,0,0">
+          <item>
+           <widget class="QLineEdit" name="srcLineEdit1">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="placeholderText">
+             <string>参数1</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="srcLineEdit2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="placeholderText">
+             <string>参数2</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="srcReplaceButton">
+            <property name="text">
+             <string>替换</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="srcClearButton">
+            <property name="text">
+             <string>清空</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="srcCopyButton">
+            <property name="text">
+             <string>复制</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="srcPasteButton">
+            <property name="text">
+             <string>粘贴</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="srcOpenButton">
+            <property name="text">
+             <string>打开文件</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="srcTextEdit">
+          <property name="plainText">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="layoutWidget">
+       <layout class="QVBoxLayout" name="verticalLayout_dst">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLineEdit" name="dstLineEdit1">
+            <property name="placeholderText">
+             <string>参数3</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="dstLineEdit2">
+            <property name="placeholderText">
+             <string>参数4</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="swapButton">
+            <property name="text">
+             <string>上下交换</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="dstReplaceButton">
+            <property name="text">
+             <string>替换</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="dstClearButton">
+            <property name="text">
+             <string>清空</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="dstCopyButton">
+            <property name="text">
+             <string>复制</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="dstPasteButton">
+            <property name="text">
+             <string>粘贴</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="dstSaveButton">
+            <property name="text">
+             <string>保存文件</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="dstTextEdit"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QToolBox" name="toolBox_2">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="pageDecode">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>109</width>
+         <height>612</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>解码</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="pageDecrypt">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>109</width>
+         <height>612</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>解密</string>
+       </attribute>
       </widget>
      </widget>
     </item>

@@ -24,7 +24,19 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pageDecryptLayout = QtWidgets.QVBoxLayout(self.pageDecrypt)
         self.pageHexLayout = QtWidgets.QVBoxLayout(self.pageHex)
 
-    def setPlainEditText(self, edit, origintext):
+    def setPlainEditText(self, edit, text):
+        '''仅设置PlainTextEdit的值'''
+        if edit is self.srcTextEdit:
+            self.srcTextEdit.blockSignals(True)
+            self.srcTextEdit.setPlainText(text)
+            self.srcTextEdit.blockSignals(False)
+        elif edit is self.dstTextEdit:
+            self.dstTextEdit.blockSignals(True)
+            self.dstTextEdit.setPlainText(text)
+            self.dstTextEdit.blockSignals(False)
+
+    def setAndSyncPlainEditText(self, edit, origintext):
+        '''设置PlainTextEdit的值，并同步self.src或self.dst'''
         try:
             if isinstance(origintext, bytes):
                 btext = origintext
@@ -32,19 +44,13 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             elif isinstance(origintext, str):
                 btext = origintext.encode('utf-8')
                 stext = origintext
-
-            if edit is self.srcTextEdit:
-                self.src = btext
-                self.srcTextEdit.setPlainText(stext)
-            elif edit is self.dstTextEdit:
-                self.dst = btext
-                self.dstTextEdit.setPlainText(stext)
+            self.setPlainEditText(edit, stext)
         except:
+            self.setPlainEditText(edit, f'无法显示结果，结果已存入内存，共{len(btext)}字节，请另存为文件查看')
+        finally:
             if edit is self.srcTextEdit:
-                self.srcTextEdit.setPlainText(f'无法显示结果，结果已存入内存，共{len(btext)}字节，请另存为文件查看')
                 self.src = btext
             elif edit is self.dstTextEdit:
-                self.dstTextEdit.setPlainText(f'无法显示结果，结果已存入内存，共{len(btext)}字节，请另存为文件查看')
                 self.dst = btext
 
     def runCodec(self):
@@ -56,7 +62,7 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                                                  self.dstLineEdit2.text())
         except Exception as e:
             result = '转换失败:' + repr(e)
-        self.setPlainEditText(self.dstTextEdit, result)
+        self.setAndSyncPlainEditText(self.dstTextEdit, result)
 
     def setupActions(self):
         # 获取所有类
@@ -105,13 +111,20 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         if fname[0]:
             with open(fname[0], 'rb') as f:
                 data = f.read()
-                self.setPlainEditText(self.srcTextEdit, data)
+                self.setAndSyncPlainEditText(self.srcTextEdit, data)
 
     def saveFile(self):
         fname = QtWidgets.QFileDialog.getSaveFileName(self, '保存文件')
         if fname[0]:
             with open(fname[0], 'wb') as f:
                 f.write(self.dst)
+
+    def swapText(self):
+        srcText = self.srcTextEdit.toPlainText()
+        dstText = self.dstTextEdit.toPlainText()
+        self.setPlainEditText(self.srcTextEdit, dstText)
+        self.setPlainEditText(self.dstTextEdit, srcText)
+        self.src, self.dst = self.dst, self.src
 
     def setupSignals(self):
         def textEditTextChanged():
@@ -125,6 +138,7 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.srcOpenButton.clicked.connect(self.openFile)
         self.dstSaveButton.clicked.connect(self.saveFile)
+        self.swapButton.clicked.connect(self.swapText)
 
 
 if __name__ == '__main__':
