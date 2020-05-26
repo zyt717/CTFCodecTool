@@ -17,6 +17,12 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QToolBox" name="toolBox">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -25,8 +31,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>109</width>
-         <height>586</height>
+         <width>69</width>
+         <height>560</height>
         </rect>
        </property>
        <attribute name="label">
@@ -38,12 +44,12 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>109</width>
-         <height>586</height>
+         <width>69</width>
+         <height>560</height>
         </rect>
        </property>
        <attribute name="label">
-        <string>加密</string>
+        <string>古典加密</string>
        </attribute>
       </widget>
       <widget class="QWidget" name="pageHex">
@@ -51,12 +57,17 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>109</width>
-         <height>586</height>
+         <width>69</width>
+         <height>560</height>
         </rect>
        </property>
        <attribute name="label">
         <string>进制转换</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="pageHash">
+       <attribute name="label">
+        <string>Hash</string>
        </attribute>
       </widget>
      </widget>
@@ -213,6 +224,12 @@
     </item>
     <item>
      <widget class="QToolBox" name="toolBox_2">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -221,7 +238,7 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>109</width>
+         <width>69</width>
          <height>612</height>
         </rect>
        </property>
@@ -234,12 +251,12 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>109</width>
+         <width>69</width>
          <height>612</height>
         </rect>
        </property>
        <attribute name="label">
-        <string>解密</string>
+        <string>古典解密</string>
        </attribute>
       </widget>
      </widget>
@@ -288,5 +305,70 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>dstClearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>dstTextEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>643</x>
+     <y>380</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>546</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>srcClearButton</sender>
+   <signal>clicked()</signal>
+   <receiver>srcTextEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>643</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>212</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dstPasteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>dstTextEdit</receiver>
+   <slot>paste()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>805</x>
+     <y>380</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>546</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>srcPasteButton</sender>
+   <signal>clicked()</signal>
+   <receiver>srcTextEdit</receiver>
+   <slot>paste()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>805</x>
+     <y>45</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>504</x>
+     <y>212</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

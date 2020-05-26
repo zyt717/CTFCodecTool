@@ -23,6 +23,7 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pageEncryptLayout = QtWidgets.QVBoxLayout(self.pageEncrypt)
         self.pageDecryptLayout = QtWidgets.QVBoxLayout(self.pageDecrypt)
         self.pageHexLayout = QtWidgets.QVBoxLayout(self.pageHex)
+        self.pageHashLayout = QtWidgets.QVBoxLayout(self.pageHash)
 
     def setPlainEditText(self, edit, text):
         '''仅设置PlainTextEdit的值'''
@@ -35,15 +36,15 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.dstTextEdit.setPlainText(text)
             self.dstTextEdit.blockSignals(False)
 
-    def setAndSyncPlainEditText(self, edit, origintext):
+    def setAndSyncPlainEditText(self, edit, text):
         '''设置PlainTextEdit的值，并同步self.src或self.dst'''
         try:
-            if isinstance(origintext, bytes):
-                btext = origintext
-                stext = origintext.decode('utf-8')
-            elif isinstance(origintext, str):
-                btext = origintext.encode('utf-8')
-                stext = origintext
+            if isinstance(text, bytes):
+                btext = text
+                stext = text.decode('utf-8')
+            elif isinstance(text, str):
+                btext = text.encode('utf-8')
+                stext = text
             self.setPlainEditText(edit, stext)
         except:
             self.setPlainEditText(edit, f'无法显示结果，结果已存入内存，共{len(btext)}字节，请另存为文件查看')
@@ -98,33 +99,16 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.pageEncryptLayout.addWidget(toolButton, 0, Qt.AlignTop)
             elif codec['category'] == 'decrypt':
                 self.pageDecryptLayout.addWidget(toolButton, 0, Qt.AlignTop)
-            elif codec['category'] == 'Hex':
+            elif codec['category'] == 'hex':
                 self.pageHexLayout.addWidget(toolButton, 0, Qt.AlignTop)
+            elif codec['category'] == 'hash':
+                self.pageHashLayout.addWidget(toolButton, 0, Qt.AlignTop)
         self.pageEncodeLayout.addStretch(1)
         self.pageDecodeLayout.addStretch(1)
         self.pageEncryptLayout.addStretch(1)
         self.pageDecryptLayout.addStretch(1)
         self.pageHexLayout.addStretch(1)
-
-    def openFile(self):
-        fname = QtWidgets.QFileDialog.getOpenFileName(self, '打开文件')
-        if fname[0]:
-            with open(fname[0], 'rb') as f:
-                data = f.read()
-                self.setAndSyncPlainEditText(self.srcTextEdit, data)
-
-    def saveFile(self):
-        fname = QtWidgets.QFileDialog.getSaveFileName(self, '保存文件')
-        if fname[0]:
-            with open(fname[0], 'wb') as f:
-                f.write(self.dst)
-
-    def swapText(self):
-        srcText = self.srcTextEdit.toPlainText()
-        dstText = self.dstTextEdit.toPlainText()
-        self.setPlainEditText(self.srcTextEdit, dstText)
-        self.setPlainEditText(self.dstTextEdit, srcText)
-        self.src, self.dst = self.dst, self.src
+        self.pageHashLayout.addStretch(1)
 
     def setupSignals(self):
         def textEditTextChanged():
@@ -133,12 +117,54 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             elif self.sender() is self.dstTextEdit:
                 self.dst = self.dstTextEdit.toPlainText().encode('utf-8')
 
+        def openFile():
+            fname = QtWidgets.QFileDialog.getOpenFileName(self, '打开文件')
+            if fname[0]:
+                with open(fname[0], 'rb') as f:
+                    data = f.read()
+                    self.setAndSyncPlainEditText(self.srcTextEdit, data)
+
+        def saveFile():
+            fname = QtWidgets.QFileDialog.getSaveFileName(self, '保存文件')
+            if fname[0]:
+                with open(fname[0], 'wb') as f:
+                    f.write(self.dst)
+
+        def swapText():
+            srcText = self.srcTextEdit.toPlainText()
+            dstText = self.dstTextEdit.toPlainText()
+            self.setPlainEditText(self.srcTextEdit, dstText)
+            self.setPlainEditText(self.dstTextEdit, srcText)
+            self.src, self.dst = self.dst, self.src
+
+        def copyText():
+            if self.sender() is self.srcCopyButton:
+                self.srcTextEdit.selectAll()
+                self.srcTextEdit.copy()
+            elif self.sender() is self.dstCopyButton:
+                self.dstTextEdit.selectAll()
+                self.dstTextEdit.copy()
+
+        def replaceText():
+            if self.sender() is self.srcReplaceButton:
+                oldText = self.srcLineEdit1.text()
+                newText = self.srcLineEdit2.text()
+                self.setAndSyncPlainEditText(self.srcTextEdit, self.srcTextEdit.toPlainText().replace(oldText, newText))
+            elif self.sender() is self.dstReplaceButton:
+                oldText = self.dstLineEdit1.text()
+                newText = self.dstLineEdit2.text()
+                self.setAndSyncPlainEditText(self.dstTextEdit, self.dstTextEdit.toPlainText().replace(oldText, newText))
+
         self.srcTextEdit.textChanged.connect(textEditTextChanged)
         self.dstTextEdit.textChanged.connect(textEditTextChanged)
 
-        self.srcOpenButton.clicked.connect(self.openFile)
-        self.dstSaveButton.clicked.connect(self.saveFile)
-        self.swapButton.clicked.connect(self.swapText)
+        self.srcOpenButton.clicked.connect(openFile)
+        self.dstSaveButton.clicked.connect(saveFile)
+        self.swapButton.clicked.connect(swapText)
+        self.srcCopyButton.clicked.connect(copyText)
+        self.dstCopyButton.clicked.connect(copyText)
+        self.srcReplaceButton.clicked.connect(replaceText)
+        self.dstReplaceButton.clicked.connect(replaceText)
 
 
 if __name__ == '__main__':
