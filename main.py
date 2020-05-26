@@ -83,7 +83,7 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.menuEncrypt.addAction(act)
             elif codec['category'] == 'decrypt':
                 self.menuDecrypt.addAction(act)
-            elif codec['category'] == 'Hex':
+            elif codec['category'] == 'hex':
                 self.menuHex.addAction(act)
 
             # 添加至toolbox

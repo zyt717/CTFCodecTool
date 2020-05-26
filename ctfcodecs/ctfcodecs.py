@@ -175,6 +175,55 @@ ctfcodecs = [
      'func': lambda src, key_a, key_b, key_c, key_d: dangpu(src, False)
      },
 
+    {'text': '2->8',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: oct(int(src, 2))
+     },
+    {'text': '2->10',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: str(int(src, 2))
+     },
+    {'text': '2->16',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: hex(int(src, 2))
+     },
+    {'text': '8->2',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: bin(int(src, 8))
+     },
+    {'text': '8->10',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: str(int(src, 8))
+     },
+    {'text': '8->16',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: hex(int(src, 8))
+     },
+    {'text': '10->2',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: bin(int(src))
+     },
+    {'text': '10->8',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: oct(int(src))
+     },
+    {'text': '10->16',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: hex(int(src))
+     },
+    {'text': '16->2',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: bin(int(src, 16))
+     },
+    {'text': '16->8',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: oct(int(src, 16))
+     },
+    {'text': '16->10',
+     'category': 'hex',
+     'func': lambda src, key_a, key_b, key_c, key_d: str(int(src, 16))
+     },
+
     {'text': 'MD5',
      'category': 'hash',
      'func': lambda src, key_a, key_b, key_c, key_d: hashlib.md5(src).hexdigest()
