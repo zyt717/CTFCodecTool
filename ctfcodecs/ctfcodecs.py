@@ -73,14 +73,23 @@ ctfcodecs = [
      'func': lambda src, key_a, key_b, key_c, key_d: ''.join([chr(int(x)) for x in src.decode().split(' ')])
      },
 
-    {'text': 'ASCII2Hex',
+    {'text': 'Str2Bin',
      'category': 'encode',
-     'tooltip': '自定义前缀填在参数1中',
+     'tooltip':'字符串转为二进制',
+     'func': lambda src, key_a, key_b, key_c, key_d: ''.join(list(map(lambda c: bin(c)[2:], src)))
+     },
+    {'text': 'Bin2Str',
+     'category': 'decode',
+     'tooltip':'二进制转为字符串',
+     'func': lambda src, key_a, key_b, key_c, key_d: bytes.fromhex(hex(int(src[:len(src) // 8 * 8], 2))[2:])
+     },
+
+    {'text': 'Str2Hex',
+     'category': 'encode',
      'func': lambda src, key_a, key_b, key_c, key_d: src.hex()
      },
-    {'text': 'Hex2ASCII',
+    {'text': 'Hex2Str',
      'category': 'decode',
-     'tooltip': '自定义前缀填在参数1中',
      'func': lambda src, key_a, key_b, key_c, key_d: bytes.fromhex(src.decode().replace('0x', ''))
      },
 
