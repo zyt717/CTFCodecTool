@@ -1,11 +1,33 @@
-十六进制    十进制    字符       |十六进制    十进制    字符       |十六进制    十进制    字符       |十六进制    十进制    字符       
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>asciiForm</class>
+ <widget class="QWidget" name="asciiForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>530</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ASCII</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QPlainTextEdit" name="plainTextEdit">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="plainText">
+      <string>十六进制    十进制    字符       |十六进制    十进制    字符       |十六进制    十进制    字符       |十六进制    十进制    字符       
 0x00        0         \0 (终止符)|0x20        32        space(空格)|0x41        65        A          |0x61        97        a          
 0x01        1         \x1        |0x21        33        !          |0x42        66        B          |0x62        98        b          
-0x02        2         \x2        |0x22        34        "          |0x43        67        C          |0x63        99        c          
+0x02        2         \x2        |0x22        34        &quot;          |0x43        67        C          |0x63        99        c          
 0x03        3         \x3        |0x23        35        #          |0x44        68        D          |0x64        100       d          
 0x04        4         \x4        |0x24        36        $          |0x45        69        E          |0x65        101       e          
 0x05        5         \x5        |0x25        37        %          |0x46        70        F          |0x66        102       f          
-0x06        6         \x6        |0x26        38        &          |0x47        71        G          |0x67        103       g          
+0x06        6         \x6        |0x26        38        &amp;          |0x47        71        G          |0x67        103       g          
 0x07        7         \x7        |0x27        39        '          |0x48        72        H          |0x68        104       h          
 0x08        8         \b (退格符)|0x28        40        (          |0x49        73        I          |0x69        105       i          
 0x09        9         \t (制表符)|0x29        41        )          |0x4a        74        J          |0x6a        106       j          
@@ -27,8 +49,16 @@
 0x19        25        \x19       |0x39        57        9          |0x5a        90        Z          |0x7a        122       z          
 0x1a        26        \x1a       |0x3a        58        :          |0x5b        91        [          |0x7b        123       {          
 0x1b        27        \x1b       |0x3b        59        ;          |0x5c        92        \          |0x7c        124       |          
-0x1c        28        \x1c       |0x3c        60        <          |0x5d        93        ]          |0x7d        125       }          
+0x1c        28        \x1c       |0x3c        60        &lt;          |0x5d        93        ]          |0x7d        125       }          
 0x1d        29        \x1d       |0x3d        61        =          |0x5e        94        ^          |0x7e        126       ~          
-0x1e        30        \x1e       |0x3e        62        >          |0x5f        95        _          |0x7f        127                  
+0x1e        30        \x1e       |0x3e        62        &gt;          |0x5f        95        _          |0x7f        127                  
 0x1f        31        \x1f       |0x3f        63        ?          |0x60        96        `          |
-                                 |0x40        64        @          
+                                 |0x40        64        @          </string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

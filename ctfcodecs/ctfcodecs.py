@@ -75,12 +75,12 @@ ctfcodecs = [
 
     {'text': 'Str2Bin',
      'category': 'encode',
-     'tooltip':'字符串转为二进制',
-     'func': lambda src, key_a, key_b, key_c, key_d: ''.join(list(map(lambda c: bin(c)[2:], src)))
+     'tooltip': '字符串转为二进制',
+     'func': lambda src, key_a, key_b, key_c, key_d: ''.join(list(map(lambda c: bin(c)[2:].rjust(8, '0'), src)))
      },
     {'text': 'Bin2Str',
      'category': 'decode',
-     'tooltip':'二进制转为字符串',
+     'tooltip': '二进制转为字符串',
      'func': lambda src, key_a, key_b, key_c, key_d: bytes.fromhex(hex(int(src[:len(src) // 8 * 8], 2))[2:])
      },
 

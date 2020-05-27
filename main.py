@@ -1,8 +1,10 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtGui import QIcon
 from ui.mainwindow import Ui_MainWindow
+from ui.asciiwindow import Ui_asciiForm
 from PyQt5.QtCore import Qt
 import sys
+import os
 
 
 class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -15,6 +17,15 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupToolboxLayout()
         self.setupActions()
         self.setupSignals()
+        self.setupAsciiWindow()
+
+    def setupAsciiWindow(self):
+        self.asciiWindow = QtWidgets.QWidget()
+        self.asciiUi = Ui_asciiForm()
+        self.asciiUi.setupUi(self.asciiWindow)
+        self.asciiWindow.setFixedSize(800, 530)
+        self.asciiWindow.setWindowIcon(QIcon('favicon.ico'))
+        self.actionASCII.triggered.connect(self.asciiWindow.show)
 
     def setupToolboxLayout(self):
         '''设置toolbox的布局'''
@@ -170,6 +181,7 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.srcTextEdit.textChanged.connect(textEditTextChanged)
         self.dstTextEdit.textChanged.connect(textEditTextChanged)
 
+        #设置各按钮事件
         self.srcOpenButton.clicked.connect(openFile)
         self.dstSaveButton.clicked.connect(saveFile)
         self.swapButton.clicked.connect(swapText)
@@ -177,6 +189,9 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.dstCopyButton.clicked.connect(copyText)
         self.srcReplaceButton.clicked.connect(replaceText)
         self.dstReplaceButton.clicked.connect(replaceText)
+
+        #设置工具
+        self.actioncalc.triggered.connect(lambda: os.system('calc'))
 
 
 if __name__ == '__main__':

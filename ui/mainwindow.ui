@@ -53,6 +53,14 @@
        </attribute>
       </widget>
       <widget class="QWidget" name="pageModernEncrypt">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>69</width>
+         <height>534</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string>现代加密</string>
        </attribute>
@@ -273,6 +281,14 @@
        </attribute>
       </widget>
       <widget class="QWidget" name="pageModernDecrypt">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>69</width>
+         <height>586</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string>现代解密</string>
        </attribute>
@@ -325,6 +341,13 @@
      <string>现代解密</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>工具</string>
+    </property>
+    <addaction name="actionASCII"/>
+    <addaction name="actioncalc"/>
+   </widget>
    <addaction name="menuEncode"/>
    <addaction name="menuDecode"/>
    <addaction name="menuEncrypt"/>
@@ -332,7 +355,18 @@
    <addaction name="menuModernEncrypt"/>
    <addaction name="menuModernDecrypt"/>
    <addaction name="menuHex"/>
+   <addaction name="menu"/>
   </widget>
+  <action name="actionASCII">
+   <property name="text">
+    <string>ASCII表</string>
+   </property>
+  </action>
+  <action name="actioncalc">
+   <property name="text">
+    <string>计算器</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>

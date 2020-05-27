@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -34,6 +34,7 @@ class Ui_MainWindow(object):
         self.pageEncrypt.setObjectName("pageEncrypt")
         self.toolBox.addItem(self.pageEncrypt, "")
         self.pageModernEncrypt = QtWidgets.QWidget()
+        self.pageModernEncrypt.setGeometry(QtCore.QRect(0, 0, 69, 534))
         self.pageModernEncrypt.setObjectName("pageModernEncrypt")
         self.toolBox.addItem(self.pageModernEncrypt, "")
         self.pageHex = QtWidgets.QWidget()
@@ -143,6 +144,7 @@ class Ui_MainWindow(object):
         self.pageDecrypt.setObjectName("pageDecrypt")
         self.toolBox_2.addItem(self.pageDecrypt, "")
         self.pageModernDecrypt = QtWidgets.QWidget()
+        self.pageModernDecrypt.setGeometry(QtCore.QRect(0, 0, 69, 586))
         self.pageModernDecrypt.setObjectName("pageModernDecrypt")
         self.toolBox_2.addItem(self.pageModernDecrypt, "")
         self.horizontalLayout.addWidget(self.toolBox_2)
@@ -164,7 +166,15 @@ class Ui_MainWindow(object):
         self.menuModernEncrypt.setObjectName("menuModernEncrypt")
         self.menuModernDecrypt = QtWidgets.QMenu(self.menubar)
         self.menuModernDecrypt.setObjectName("menuModernDecrypt")
+        self.menu = QtWidgets.QMenu(self.menubar)
+        self.menu.setObjectName("menu")
         MainWindow.setMenuBar(self.menubar)
+        self.actionASCII = QtWidgets.QAction(MainWindow)
+        self.actionASCII.setObjectName("actionASCII")
+        self.actioncalc = QtWidgets.QAction(MainWindow)
+        self.actioncalc.setObjectName("actioncalc")
+        self.menu.addAction(self.actionASCII)
+        self.menu.addAction(self.actioncalc)
         self.menubar.addAction(self.menuEncode.menuAction())
         self.menubar.addAction(self.menuDecode.menuAction())
         self.menubar.addAction(self.menuEncrypt.menuAction())
@@ -172,6 +182,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuModernEncrypt.menuAction())
         self.menubar.addAction(self.menuModernDecrypt.menuAction())
         self.menubar.addAction(self.menuHex.menuAction())
+        self.menubar.addAction(self.menu.menuAction())
 
         self.retranslateUi(MainWindow)
         self.toolBox.setCurrentIndex(0)
@@ -215,3 +226,6 @@ class Ui_MainWindow(object):
         self.menuHex.setTitle(_translate("MainWindow", "进制转换"))
         self.menuModernEncrypt.setTitle(_translate("MainWindow", "现代加密"))
         self.menuModernDecrypt.setTitle(_translate("MainWindow", "现代解密"))
+        self.menu.setTitle(_translate("MainWindow", "工具"))
+        self.actionASCII.setText(_translate("MainWindow", "ASCII表"))
+        self.actioncalc.setText(_translate("MainWindow", "计算器"))
