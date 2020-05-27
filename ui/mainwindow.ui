@@ -32,7 +32,7 @@
          <x>0</x>
          <y>0</y>
          <width>69</width>
-         <height>560</height>
+         <height>534</height>
         </rect>
        </property>
        <attribute name="label">
@@ -45,11 +45,16 @@
          <x>0</x>
          <y>0</y>
          <width>69</width>
-         <height>560</height>
+         <height>534</height>
         </rect>
        </property>
        <attribute name="label">
         <string>古典加密</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="pageModernEncrypt">
+       <attribute name="label">
+        <string>现代加密</string>
        </attribute>
       </widget>
       <widget class="QWidget" name="pageHex">
@@ -58,7 +63,7 @@
          <x>0</x>
          <y>0</y>
          <width>69</width>
-         <height>560</height>
+         <height>534</height>
         </rect>
        </property>
        <attribute name="label">
@@ -66,6 +71,14 @@
        </attribute>
       </widget>
       <widget class="QWidget" name="pageHash">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>69</width>
+         <height>534</height>
+        </rect>
+       </property>
        <attribute name="label">
         <string>Hash</string>
        </attribute>
@@ -239,7 +252,7 @@
          <x>0</x>
          <y>0</y>
          <width>69</width>
-         <height>612</height>
+         <height>586</height>
         </rect>
        </property>
        <attribute name="label">
@@ -252,11 +265,16 @@
          <x>0</x>
          <y>0</y>
          <width>69</width>
-         <height>612</height>
+         <height>586</height>
         </rect>
        </property>
        <attribute name="label">
         <string>古典解密</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="pageModernDecrypt">
+       <attribute name="label">
+        <string>现代解密</string>
        </attribute>
       </widget>
      </widget>
@@ -297,10 +315,22 @@
      <string>进制转换</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuModernEncrypt">
+    <property name="title">
+     <string>现代加密</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuModernDecrypt">
+    <property name="title">
+     <string>现代解密</string>
+    </property>
+   </widget>
    <addaction name="menuEncode"/>
    <addaction name="menuDecode"/>
    <addaction name="menuEncrypt"/>
    <addaction name="menuDecrypt"/>
+   <addaction name="menuModernEncrypt"/>
+   <addaction name="menuModernDecrypt"/>
    <addaction name="menuHex"/>
   </widget>
  </widget>

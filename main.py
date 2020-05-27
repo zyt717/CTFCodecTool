@@ -22,6 +22,8 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pageDecodeLayout = QtWidgets.QVBoxLayout(self.pageDecode)
         self.pageEncryptLayout = QtWidgets.QVBoxLayout(self.pageEncrypt)
         self.pageDecryptLayout = QtWidgets.QVBoxLayout(self.pageDecrypt)
+        self.pageModernEncryptLayout = QtWidgets.QVBoxLayout(self.pageModernEncrypt)
+        self.pageModernDecryptLayout = QtWidgets.QVBoxLayout(self.pageModernDecrypt)
         self.pageHexLayout = QtWidgets.QVBoxLayout(self.pageHex)
         self.pageHashLayout = QtWidgets.QVBoxLayout(self.pageHash)
 
@@ -83,6 +85,10 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.menuEncrypt.addAction(act)
             elif codec['category'] == 'decrypt':
                 self.menuDecrypt.addAction(act)
+            elif codec['category'] == 'modernencrypt':
+                self.menuModernEncrypt.addAction(act)
+            elif codec['category'] == 'moderndecrypt':
+                self.menuModernDecrypt.addAction(act)
             elif codec['category'] == 'hex':
                 self.menuHex.addAction(act)
 
@@ -99,6 +105,10 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.pageEncryptLayout.addWidget(toolButton, 0, Qt.AlignTop)
             elif codec['category'] == 'decrypt':
                 self.pageDecryptLayout.addWidget(toolButton, 0, Qt.AlignTop)
+            elif codec['category'] == 'modernencrypt':
+                self.pageModernEncryptLayout.addWidget(toolButton, 0, Qt.AlignTop)
+            elif codec['category'] == 'moderndecrypt':
+                self.pageModernDecryptLayout.addWidget(toolButton, 0, Qt.AlignTop)
             elif codec['category'] == 'hex':
                 self.pageHexLayout.addWidget(toolButton, 0, Qt.AlignTop)
             elif codec['category'] == 'hash':
@@ -107,6 +117,8 @@ class CtfCodecMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pageDecodeLayout.addStretch(1)
         self.pageEncryptLayout.addStretch(1)
         self.pageDecryptLayout.addStretch(1)
+        self.pageModernEncryptLayout.addStretch(1)
+        self.pageModernDecryptLayout.addStretch(1)
         self.pageHexLayout.addStretch(1)
         self.pageHashLayout.addStretch(1)
 
