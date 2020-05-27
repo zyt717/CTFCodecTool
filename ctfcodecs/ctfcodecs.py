@@ -72,15 +72,15 @@ ctfcodecs = [
      'func': lambda src, key_a, key_b, key_c, key_d: ''.join([chr(int(x)) for x in src.decode().split(' ')])
      },
 
-    {'text': 'Hex',
+    {'text': 'ASCII2Hex',
      'category': 'encode',
      'tooltip': '自定义前缀填在参数1中',
-     'func': lambda src, key_a, key_b, key_c, key_d: key_a + src.hex()
+     'func': lambda src, key_a, key_b, key_c, key_d: src.hex()
      },
-    {'text': 'Hex',
+    {'text': 'Hex2ASCII',
      'category': 'decode',
      'tooltip': '自定义前缀填在参数1中',
-     'func': lambda src, key_a, key_b, key_c, key_d: bytes.fromhex(src.decode().replace(key_a, ''))
+     'func': lambda src, key_a, key_b, key_c, key_d: bytes.fromhex(src.decode().replace('0x', ''))
      },
 
     {'text': 'Qwerty',
